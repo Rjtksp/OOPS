@@ -3,10 +3,14 @@ Let's build a Cake Shop CRUD System using the cake analogy. Every single line wi
 
 ### Think of OOP LIKE THIS:
 ```
+
 CLASS = A blueprint (like a cake recipe)
 OBJECT = The actual cake (made from the recipe)
 PROPERTIES = Ingredients (flour, eggs, sugar)
 METHODS = Actions (bake, frost, cut)
+CONSTRUCTOR = "Preheat oven" (happens first)
+$this       = "This cake" (the current one)
+
 ```
 
 ```
@@ -367,8 +371,6 @@ CREATE      = Bake a new cake
 READ        = Look at menu / Find a cake
 UPDATE      = Change frosting / Change price
 DELETE      = Cake sold out / Remove from menu
-CONSTRUCTOR = "Preheat oven" (happens first)
-$this       = "This cake" (the current one)
 
 THAT'S IT! JUST 4 ACTIONS!
 ```
