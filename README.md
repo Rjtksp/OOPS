@@ -2,12 +2,15 @@
 Let's build a Cake Shop CRUD System using the cake analogy. Every single line will relate to cakes!
 
 ### Think of OOP LIKE THIS:
-```CLASS = A blueprint (like a cake recipe)
+```
+CLASS = A blueprint (like a cake recipe)
 OBJECT = The actual cake (made from the recipe)
 PROPERTIES = Ingredients (flour, eggs, sugar)
-METHODS = Actions (bake, frost, cut)```
+METHODS = Actions (bake, frost, cut)
+```
 
-```<?php
+```
+<?php
 // ============ THE BLUEPRINT (CLASS) ============
 class Cake {
     // INGREDIENTS (PROPERTIES)
@@ -69,9 +72,10 @@ echo $vanillaCake->bake() . "\n";
 echo $vanillaCake->cakeInfo() . "\n";
 
 echo "\n";
-echo "🍽️  LET'S EAT!\n";
+echo "LET'S EAT!\n";
 echo $chocolateCake->cutSlice() . "\n";
 echo $chocolateCake->cutSlice() . "\n";
-?>```
+?>
+```
 
 ### SEE? One blueprint made 2 different cakes! Each cake has its own flavor, size, and slices!
