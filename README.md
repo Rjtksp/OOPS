@@ -137,7 +137,7 @@ class CakeShop {
     // R = READ (Show menu - all cakes)
     public function showMenu() {
         if(empty($this->cakes)) {
-            echo "📋 No cakes in display case!\n";
+            echo "No cakes in display case!\n";
             return;
         }
         
@@ -261,5 +261,179 @@ echo "------------------\n";
 foreach($shop->findCake($cake1->id) as $id => $cake) {
     echo "Found: " . $cake->getFullDetails() . "\n";
 }
+?>
+```
+
+### PART 3: OOP CONCEPTS WITH CAKES (Super Simple Way)
+### 1. ENCAPSULATION (Private Recipe)
+```
+class SecretRecipeCake {
+    private $secretIngredient = "love";  // PRIVATE - can't see outside!
+    public $flavor;
+    
+    public function __construct($flavor) {
+        $this->flavor = $flavor;
+    }
+    
+    // Only way to access secret ingredient
+    public function getSecret() {
+        return "Secret ingredient: " . $this->secretIngredient;
+    }
+}
+
+$cake = new SecretRecipeCake("Chocolate");
+echo $cake->flavor;        // Works - public
+// echo $cake->secretIngredient;  // ERROR! Private!
+echo $cake->getSecret();   // Works - public method
+```
+
+### 2. INHERITANCE (Family Recipes)
+```
+// PARENT CLASS - Basic Cake
+class BasicCake {
+    public $flavor;
+    
+    public function __construct($flavor) {
+        $this->flavor = $flavor;
+    }
+    
+    public function bake() {
+        return "Baking a {$this->flavor} cake at 350°F";
+    }
+}
+
+// CHILD CLASS - Birthday Cake (is a BasicCake + more)
+class BirthdayCake extends BasicCake {
+    public $candles;
+    public $message;
+    
+    public function addCandles($number) {
+        $this->candles = $number;
+        return "Added {$number} candles!";
+    }
+    
+    public function writeMessage($msg) {
+        $this->message = $msg;
+        return "Written: '{$msg}'";
+    }
+}
+
+$birthday = new BirthdayCake("Chocolate");
+echo $birthday->bake();          // From parent
+echo $birthday->addCandles(5);   // From child
+```
+
+### 3. POLYMORPHISM (Same word, different cakes)
+```
+class WeddingCake extends BasicCake {
+    public function decorate() {
+        return "Adding elegant white flowers";
+    }
+}
+
+class KidsCake extends BasicCake {
+    public function decorate() {
+        return "Adding colorful cartoon characters";
+    }
+}
+
+class FancyCake extends BasicCake {
+    public function decorate() {
+        return "Adding gold leaf and chocolate curls";
+    }
+}
+
+// SAME METHOD NAME - DIFFERENT RESULTS!
+$cakes = [
+    new WeddingCake("Vanilla"),
+    new KidsCake("Chocolate"),
+    new FancyCake("Red Velvet")
+];
+
+foreach($cakes as $cake) {
+    echo $cake->decorate() . "\n";
+}
+// Output:
+// Adding elegant white flowers
+// Adding colorful cartoon characters
+// Adding gold leaf and chocolate curls
+```
+
+### PART 4: CRUD - Just 4 Actions!
+```
+CAKE SHOP CRUD:
+
+CREATE      = Bake a new cake
+READ        = Look at menu / Find a cake
+UPDATE      = Change frosting / Change price
+DELETE      = Cake sold out / Remove from menu
+CONSTRUCTOR = "Preheat oven" (happens first)
+$this       = "This cake" (the current one)
+
+THAT'S IT! JUST 4 ACTIONS!
+```
+
+### REMEMBER THIS CHART:
+```
+| OOP Term          | Cake Analogy                        | Code Example |
+|-------------------|-------------------------------------|--------------|
+| **CLASS**         | Cake recipe / blueprint             | `class Cake { }` |
+| **OBJECT**        | Actual cake you can eat             | `$myCake = new Cake();` |
+| **PROPERTY**      | Ingredients                         | `$cake->flavor = "chocolate";` |
+| **METHOD**        | Actions (bake, cut, frost)          | `$cake->cutSlice();` |
+| **CONSTRUCTOR**   | Preheat oven (runs first)           | `public function __construct() { }` |
+| **$this**         | "This cake right here"              | `$this->flavor` |
+| **CREATE**        | Bake new cake                       | `$shop->bakeCake()` |
+| **READ**          | Look at cake menu                   | `$shop->showMenu()` |
+| **UPDATE**        | Change frosting                     | `$shop->changeFrosting()` |
+| **DELETE**        | Cake sold out                       | `$shop->sellCake()` |
+```
+
+
+### YOUR TURN - Build This Simple CRUD: Pizza (Not cake, but still food!)
+```
+<?php
+class Pizza {
+    public $topping;
+    public $size;
+    public $slices;
+    
+    public function __construct($topping, $size) {
+        $this->topping = $topping;
+        $this->size = $size;
+        $this->slices = ($size == "large") ? 8 : 6;
+    }
+}
+
+class Pizzeria {
+    private $pizzas = [];
+    
+    // TODO 1: CREATE - Make pizza
+    public function makePizza($topping, $size) {
+        // Your code here
+    }
+    
+    // TODO 2: READ - Show menu
+    public function showMenu() {
+        // Your code here
+    }
+    
+    // TODO 3: UPDATE - Add extra cheese
+    public function addExtraCheese($id) {
+        // Your code here
+    }
+    
+    // TODO 4: DELETE - Pizza finished
+    public function pizzaFinished($id) {
+        // Your code here
+    }
+}
+
+// TEST IT:
+$pizzeria = new Pizzeria();
+$pizzeria->makePizza("Pepperoni", "large");
+$pizzeria->makePizza("Mushroom", "medium");
+$pizzeria->showMenu();
+// ... try the other methods!
 ?>
 ```
